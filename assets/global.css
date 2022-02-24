@@ -1,0 +1,13 @@
+.skip-to-content-link {
+  background: #222;
+  color: #fff;
+  font-weight: 700;
+  left: 50%;
+  padding: 4px;
+  position: absolute;
+  transform: translateY(-150%);
+}
+
+.skip-to-content-link:focus {
+  transform: translateY(0%);  
+}

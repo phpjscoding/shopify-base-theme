@@ -1,0 +1,14 @@
+{
+  "sections":{
+    "hero":{
+      "type":"hero"
+    },
+    "fist-of-collections":{
+      "type":"list-of-collections"
+    }
+  },
+  "order":[
+    "hero",
+    "fist-of-collections"
+  ]
+}

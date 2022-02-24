@@ -1,0 +1,69 @@
+
+<a href="{{product.url}}">
+  <img src="{{product.featured_image | img_url:'400x'}}" alt="">
+
+ 
+</a>
+
+ <h1>{{product.title}}</h1>
+
+
+<form action="/cart/add" method="post" enctype="multipart/form-data" class="main-product-form">
+    
+
+
+{% if product.has_only_default_variant %}
+  <input name="id" value="{{ product.selected_or_first_available_variant.id }}" type="hidden">
+{% else %}
+   <!--  loop through options ex: size / color / material /  -->
+  {% for product_option in product.options_with_values %}
+       {{product_option.name}}
+       <select name="id" multiple>
+               <!-- loop through each option value ex: size :sm,md,xl / color:blue,green,pink -->
+                <!-- we could use (for value in product_option.value) but that will not give us the id -->
+              {%for variant in product.variants%}
+                   <option value="{{variant.id}}">
+                     {{variant.title}}
+                   </option>
+              {%endfor%}
+       </select>
+  {% endfor %}
+{% endif %}
+
+<input type="number" name="quantity" id="Qantity" min="1">
+
+    <input type="submit" name="add" id="add" value="Add to Cart" class="button">
+</form>
+
+
+<style>
+  .main-product-form option {
+      /* position: absolute; */
+      display: inline-block;
+      width: 4rem;
+      text-align: center;
+      height: 2rem;
+      /* line-height: 2rem; */
+      /* display: flex; */
+      /* flex-direction: row; */
+      outline: 1px solid #444;
+          margin: 5px;  
+      
+  }
+
+  .main-product-form select{
+    border: none;
+    outline: none;
+    overflow: hidden;
+    height: 3rem;
+  }
+</style>
+
+
+
+
+
+
+
+
+
